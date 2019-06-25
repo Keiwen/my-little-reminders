@@ -1,0 +1,16 @@
+{
+  "config": {
+    "col": 1
+  },
+  "title": "My little reminders",
+  "elements": [
+    {
+      "title": "First reminder",
+      "body": "This is the description of my reminder"
+    },
+    {
+      "title": "Second",
+      "body": "<ul><li>It could be</li><li><strong>HTML</strong> content</li><li><i>if \"quotes\" encoded</i></li></ul>"
+    }
+  ]
+}
