@@ -1,5 +1,7 @@
 # my-little-reminders
 
+v1.1
+
 Used locally to have a list of static reminders for a community.
 
 You can copy what you get from docs folder to a 'my-little-reminders'
