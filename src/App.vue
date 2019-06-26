@@ -35,6 +35,10 @@ export default {
       }
     }
     rawFile.send(null)
+    if (typeof remindStore.elements !== 'object' || typeof remindStore.elements[0] === 'undefined') {
+      console.log('Store type is ' + typeof remindStore.elements)
+      alert('Error: cannot retrieve store elements')
+    }
     this.store = remindStore
   }
 }
