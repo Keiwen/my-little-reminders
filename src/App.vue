@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import RemindStore from '../static/store.json'
 import Reminder from '@/components/Reminder'
 
 export default {
@@ -24,7 +23,19 @@ export default {
     }
   },
   mounted () {
-    this.store = RemindStore
+    let remindStore = {}
+    let rawFile = new XMLHttpRequest()
+    rawFile.open('GET', './static/store.json', false)
+    rawFile.onreadystatechange = function () {
+      if (rawFile.readyState === 4) {
+        if (rawFile.status === 200 || rawFile.status === 0) {
+          let allText = rawFile.responseText
+          remindStore = JSON.parse(allText)
+        }
+      }
+    }
+    rawFile.send(null)
+    this.store = remindStore
   }
 }
 </script>
