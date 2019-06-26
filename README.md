@@ -2,8 +2,9 @@
 
 Used locally to have a list of static reminders for a community.
 
-Change data stored in static/store.json, build project again
-and put what you get from doc folder to our server folder.
+You can copy what you get from docs folder to a 'my-little-reminders'
+folder on a server.
+Change data stored in static/store.json as you need!
 
 <a target="_blank" href="https://keiwen.github.io/my-little-reminders/">Basic sample</a>
 
