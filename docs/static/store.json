@@ -1,6 +1,6 @@
 {
   "config": {
-    "col": 1
+    "default_visible": true
   },
   "title": "My little reminders",
   "elements": [
