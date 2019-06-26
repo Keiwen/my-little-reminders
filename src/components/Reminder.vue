@@ -1,5 +1,5 @@
 <template>
-  <b-card no-body class="reminder" :style="style">
+  <b-card no-body class="reminder" :class="'reminder-'+color">
     <b-card-header header-tag="header">
       <b-button block @click="toggleReminder(reminder_index)">{{content.title}}</b-button>
     </b-card-header>
@@ -15,7 +15,7 @@ export default {
   props: ['content', 'reminder_index'],
   data () {
     return {
-      style: ''
+      color: 'none'
     }
   },
   methods: {
@@ -24,21 +24,12 @@ export default {
     }
   },
   mounted () {
-    const styles = {
-      'blue': {'base': '#2A4A75', 'light': '#589AF5', 'hover': '#132236'},
-      'red': {'base': '#751E1A', 'light': '#F54035', 'hover': '#360E0C'},
-      'yellow': {'base': '#757013', 'light': '#F5EC26', 'hover': '#363309'},
-      'green': {'base': '#287536', 'light': '#53F570', 'hover': '#123619'},
-      'pink': {'base': '#6D1575', 'light': '#E42BF5', 'hover': '#320A36'},
-      'brown': {'base': '#66645D', 'light': '#F7E9D7', 'hover': '#3B3A35'}
-    }
-    const colors = Object.keys(styles)
-    const randomColor = colors[Math.floor(Math.random() * colors.length)]
-    this.style = {
-      '--base': styles[randomColor]['base'],
-      '--light': styles[randomColor]['light'],
-      '--hover': styles[randomColor]['hover']
-    }
+    const colors = [
+      'blue', 'red', 'yellow', 'green', 'pink', 'orange',
+      'lightblue', 'darkblue', 'violet', 'brown', 'grey',
+      'dark'
+    ]
+    this.color = colors[Math.floor(Math.random() * colors.length)]
   }
 }
 </script>
@@ -48,20 +39,58 @@ export default {
     text-align: justify;
   }
 
-  .reminder {
-    border-color: var(--base);
+  @mixin colorReminder($color) {
+    border-color: $color;
     header {
-      background-color: var(--light);
+      background-color: lighten($color, 50%);
+      border-bottom: 1px solid $color;
       button {
-        background-color: var(--base); border-color: var(--base);
+        background-color: $color; border-color: $color;
         &:hover {
-          background-color: var(--hover); border-color: var(--base);
+          background-color: darken($color, 10%); border-color: $color;
         }
       }
     }
     .card-body {
-      background-color: var(--light);
+      background-color: lighten($color, 50%);
     }
+  }
+
+  .reminder-blue {
+    @include colorReminder(#285370);
+  }
+  .reminder-red{
+    @include colorReminder(#662427);
+  }
+  .reminder-yellow {
+    @include colorReminder(#AFA61D);
+  }
+  .reminder-green {
+    @include colorReminder(#287536);
+  }
+  .reminder-pink {
+    @include colorReminder(#662460);
+  }
+  .reminder-orange {
+    @include colorReminder(#AF5D15);
+  }
+  .reminder-lightblue {
+    @include colorReminder(#28726C);
+  }
+  .reminder-darkblue {
+    @include colorReminder(#272E6D);
+  }
+  .reminder-violet {
+    @include colorReminder(#46266B);
+  }
+  .reminder-brown {
+    @include colorReminder(#664724);
+  }
+  .reminder-grey {
+    @include colorReminder(#777777);
+  }
+  .reminder-dark {
+    @include colorReminder(#333333);
   }
 
 </style>
